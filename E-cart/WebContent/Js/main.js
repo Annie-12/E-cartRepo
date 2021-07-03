@@ -22,7 +22,7 @@ class Header extends HTMLElement {
       </li>
     </ul>        
      <a href="/E-cart/Seller/SellerHome.jsp"> <button class="btn btn-outline-success my-2 my-sm-0">Become a seller</button></a>
-     <a href="/E-cart/login.jsp" style="text-decoration:none;padding-left:20px">Login</a>
+     <a href="/E-cart/Login.jsp" style="text-decoration:none;padding-left:20px">Login</a>
      
 
   </div>
