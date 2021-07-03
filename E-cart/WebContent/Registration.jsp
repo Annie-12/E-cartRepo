@@ -22,7 +22,7 @@
 <style type="text/css">
 .container {
 	border-radius: 5px;
-	background-color: #f2f2f2;
+	background-color: #a0c99770;
 	padding: 20px;
 }
 
@@ -98,7 +98,7 @@ input[type=date], select {
 			</nav>
 		</header>
 
-		<div align="center" class="container"  style="width:864px;height:500px;background-color:#40E0D0">
+		<div align="center" class="container"  style="width:864px;height:500px;background-color:#a0c99770">
 			<form action="search" method="post">
 				<table class="w3-table w3-striped w3-border">
 					
