@@ -18,7 +18,7 @@ class Header extends HTMLElement {
         <a class="nav-link" href="about.html">About Us</a>
       </li>
       <li class="nav-item" id="contact">
-        <a class="nav-link" href="contact.html">Contact Us</a>
+        <a class="nav-link" href="contact.jsp">Contact Us</a>
       </li>
     </ul>        
      <a href="/E-cart/Seller/SellerHome.jsp"> <button class="btn btn-outline-success my-2 my-sm-0">Become a seller</button></a>
