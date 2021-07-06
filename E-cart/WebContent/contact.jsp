@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 <body>
 <header-h></header-h>
 <br>
-<form action="alert("You query has been submitted!!");">
+<form >
 	<div class="container">
 		<div class="jumbotron">
 			<div class="form-group">
@@ -30,12 +30,43 @@
 				<input type="text" class="form-control" name="name" placeholder="Your name"> <br>
 				<input type="email" class="form-control" name="email" placeholder="E-mail address"> <br>
 				<textarea name="query" class="form-control" placeholder="Type your query here.." rows="4" cols="100"></textarea> <br>
-				<button class="btn btn-primary">Submit</button>
+				<input type="submit" name="sb1" class="btn btn-primary" value="submit"/>
 			</div>
 		</div>
 	</div>
 </form>
-
+<%
+	if(request.getParameter("sb1")!=null){
+		ServletContext cn=getServletContext();
+		
+		try{
+			Connection cn1=(Connection)cn.getAttribute("mycon");
+			Statement st=cn1.createStatement();
+			
+			PreparedStatement pr=cn1.prepareStatement("insert into queries values(?,?,?)");
+			
+			pr.setString(1,request.getParameter("email") );
+			pr.setString(3,request.getParameter("name"));
+			
+			pr.setString(2,request.getParameter("query"));
+			
+			
+			int v=pr.executeUpdate();
+			if(v>0){
+				out.write("<script type='text/javascript'>alert('Received your query')</script>");
+				
+			}
+			
+			out.write("<script type='text/javascript'>window.location='Login.jsp';</script>");
+			
+			
+		}catch(Exception e){
+			e.getStackTrace();
+			String exception=e.getMessage();
+			out.write("<script type='text/javascript'>alert('Insert values properly')</script>");
+		}
+	}
+%>
 
 <footer-f></footer-f>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

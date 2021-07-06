@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.sql.*"%>
+    <%@page import="java.io.OutputStream"%>
+    <%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,45 +13,69 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/E-cart/Css/AdminPages.css" type="text/css" >
+  
 </head>
 <body>
 <div class="sidenav">
-	<a href="AdminHome.jsp">Dashboard</a>
-  <a href="GetQueries.jsp">Orders</a>
-  <a href="Approve.jsp">Products</a>
+	<a href="SellerDashboard.jsp">Dashboard</a>
+  <a href="GetOrders.jsp">Orders</a>
+  <a href="SellerProfile.jsp">Profile</a>
+  <a href="FindNearbyShops.jsp">Find nearby shops</a>
   
 </div>
-<div class="logout" style="float:right;padding:5px">
+<div class="logout" style="float:right;padding:5px;">
+	
+	<form action="/E-cart/logout.jsp">
 	<input type="button" class="btn btn-outline-secondary" name="Add Product" value="Add product" onclick="window.location='UploadProduct.jsp'"/>
-	<input type="button" class="btn btn-primary" name="logoutbtn" value="Logout"/>
+	<input type="submit" class="btn btn-primary" name="logoutbtn" value="Logout"/></form>
 </div>
-<div align="center" style="padding-top:100px;padding-left:300px;pading-right:100px">
-<table class="table table-hover" style="width:80%">
+<div class="container" style="margin-left:200px;padding-top:100px">
+<table class="table table-hover" style="width:120%">
     <thead>
       <tr>
+      	<th>Product Id</th>
+      	<th>Image</th>
         <th>Name</th>
+        <th>Description</th>      
         <th>Status</th>
-        <th>Price</th>
+        <th>Price</th><th></th><th></th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
+    
+    <%
+    String email=(String)session.getAttribute("email");
+    
+    ServletContext cn=getServletContext();
+	try{
+		
+		Connection cn1=(Connection)cn.getAttribute("mycon");
+		Statement st1=cn1.createStatement();
+		ResultSet rs=st1.executeQuery("select * from product where Owner='"+email+"'");
+		while(rs.next()){	
+			
+			Blob blob = rs.getBlob(8);
+			
+	       byte byteArray[] = blob.getBytes(1, (int)blob.length());
+	       String encoded= Base64.getEncoder().encodeToString(byteArray);
+	       String pic="data:image/jpg;base64,"+encoded;%>
+	       
+	       <tr><td><%=rs.getString(1)%></td><td><img src="<%=pic%>" width="50" height="50"></td>
+	     
+	      <%
+	      out.write("<td>"+rs.getString(2)+"</td><td style='width:40%'>"+rs.getString(3)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(5)+"</td><td><a href='EditProduct.jsp?prodid="+rs.getString(1) +"'>Change Status</a></td><td><a href='DeleteProduct.jsp?prodid="+rs.getString(1) +"'>Delete</a></td>");
+	        
+	      // os.flush();
+       // os.close();}
+	}}
+	catch(Exception e){
+		e.getStackTrace();
+	}
+	%>
+    	
+   
+     
   </table>
+  
   </div>
   
 </body>

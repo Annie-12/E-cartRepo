@@ -23,7 +23,7 @@
 <body> 
 <header-h></header-h>
 <br>
-<form action="LoginProcess.jsp" method="post">
+<form action="loginservlet" method="post">
 	<div class="container">
 		<div class="jumbotron">
 			<div class="form-group">
@@ -32,11 +32,16 @@
 				<input type="email" class="form-control" name="email" placeholder="E-mail address"> <br>
 				<input type="password" class="form-control" name="password" placeholder="Password"><br>
 				<a href="Registration.jsp">New User Register</a>
-				<button class="btn btn-primary">Login</button>
+				<button class="btn btn-primary" name="logbtn">Login</button>
 			</div>
 		</div>
 	</div>
 </form>
+<%
+	if(request.getParameter("logbtn")!=null){
+		session.setAttribute("email",(String)request.getParameter("email"));
+	}
+%>
 <%
 
 	

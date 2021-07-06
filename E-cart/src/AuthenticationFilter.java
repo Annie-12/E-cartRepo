@@ -11,21 +11,22 @@ import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- * Servlet Filter implementation class Fil
+ * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter("/Fil")
-public class Fil implements Filter {
+@WebFilter("/AuthenticationFilter")
+public class AuthenticationFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public Fil() {
+    public AuthenticationFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -44,15 +45,17 @@ public class Fil implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-		String nm=request.getParameter("t7");
-		String ps=request.getParameter("t8");		
+		String nm=request.getParameter("email");
+		String ps=request.getParameter("password");		
 		String psw="";
 		PrintWriter out=response.getWriter();
 	
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-    		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","Ananya@12");
-			PreparedStatement pr=con.prepareStatement("select password from user where Email= ?");
+    		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ecart","root","Smur@67");
+    		
+    		
+    		PreparedStatement pr=con.prepareStatement("select password from user where Email= ?");
 			//String typ="Admin";
 			pr.setString(1,nm);
 			ResultSet rs=pr.executeQuery();
@@ -66,7 +69,7 @@ public class Fil implements Filter {
 				}
 				else
 				{
-					RequestDispatcher rq=request.getRequestDispatcher("home.jsp");
+					RequestDispatcher rq=request.getRequestDispatcher("index.jsp");
 					rq.forward(request, response);
 				
 					
@@ -77,7 +80,6 @@ public class Fil implements Filter {
 			e1.printStackTrace();
 		}
 		
-		chain.doFilter(request, response);
 	}
 
 	/**
