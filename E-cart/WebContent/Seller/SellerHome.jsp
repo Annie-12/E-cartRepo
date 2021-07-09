@@ -51,7 +51,7 @@
 </div>
 
 <div class="mid" style="margin-top:-450px;margin-left:700px">
-<button class="btn btn-primary" onclick="window.location='SellerRegistration.jsp'">Become a seller</button>
+<button class="btn btn-primary" onclick="window.location='/E-cart/Registration.jsp'">Become a seller</button>
 <h2>Flaunt your skill and<br> Get PAID</h2>
 </div>
 <div style="margin-top:200px;padding-left:45%"><h3>How it works<br></h3></div>

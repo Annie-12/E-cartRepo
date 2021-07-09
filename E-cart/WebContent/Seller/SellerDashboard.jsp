@@ -16,11 +16,18 @@
   
 </head>
 <body>
+<%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidte");
+if(session.getAttribute("email")==null){
+response.sendRedirect("/E-cart/");
+}
+
+%>
 <div class="sidenav">
 	<a href="SellerDashboard.jsp">Dashboard</a>
   <a href="GetOrders.jsp">Orders</a>
   <a href="SellerProfile.jsp">Profile</a>
-  <a href="FindNearbyShops.jsp">Find nearby shops</a>
+  
   
 </div>
 <div class="logout" style="float:right;padding:5px;">

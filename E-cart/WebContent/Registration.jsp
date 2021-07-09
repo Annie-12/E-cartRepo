@@ -123,7 +123,7 @@ input[type=date], select {
 					<tr>
 						<td>Role :</td>
 						<td><select name="Role">
-								<option value="Buyer">Buyer</option>
+								<option>..</option>
 								<option value="Shop-owner">Shop-Owner</option>
 								<option value="Investor">Investor</option>
 						</select></td>

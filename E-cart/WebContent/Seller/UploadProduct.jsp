@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="/E-cart/Css/AdminPages.css" type="text/css" >
 </head>
 <body>
+<%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidte");
+if(session.getAttribute("email")==null){
+response.sendRedirect("/E-cart/");
+}
+
+%>
 <div class="sidenav">
 	<a href="SellerDashboard.jsp">Dashboard</a>
   <a href="GetOrders.jsp">Orders</a>

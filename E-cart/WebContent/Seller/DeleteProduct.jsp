@@ -22,6 +22,13 @@
 </head>
 <body>
 <%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidte");
+if(session.getAttribute("email")==null){
+response.sendRedirect("/E-cart/");
+}
+
+%>
+<%
 	String prodid=(String)request.getParameter("prodid");
 %>
 <br><br>

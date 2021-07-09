@@ -10,10 +10,17 @@
 <link rel="stylesheet" href="/E-cart/Css/AdminPages.css" type="text/css" >
 </head>
 <body>
+<%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidte");
+if(session.getAttribute("email")==null){
+response.sendRedirect("/E-cart/");
+}
+
+%>
 <div class="sidenav">
 	<a href="AdminHome.jsp">Home</a>
   <a href="GetQueries.jsp?page=1">Get Queries</a>
-  <a href="Approve.jsp">Approve featured project</a>
+  <a href="AllProducts.jsp">Products</a>
   
 </div>
 <div class="logout" style="float:right;padding:5px">

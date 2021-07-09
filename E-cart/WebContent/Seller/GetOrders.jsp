@@ -14,6 +14,13 @@
 </head>
 <body>
 <%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidte");
+if(session.getAttribute("email")==null){
+response.sendRedirect("/E-cart/");
+}
+
+%>
+<%
 	String email=(String)session.getAttribute("email");
 %>
 <div class="sidenav">
@@ -66,6 +73,40 @@ catch(Exception e){
 	System.out.println(""+e.getMessage());
 }
 %>
+<div>
+<h3>Featured orders</h3>
+<%
+
+
+
+ServletContext cn3=getServletContext();
+try{
+	
+	Connection cn1=(Connection)cn3.getAttribute("mycon");
+	Statement st1=cn1.createStatement();
+	//select * from order,prod where (order.prodid=prod.id) and (prod.owner = "email");
+	ResultSet rs=st1.executeQuery("select * from investororder where SellerId = '"+email+"'");
+	int size=0;
+	while(rs.next()){%>
+		
+		
+			<div class="card bg-light" >
+  <div class="card-header">Order id : <%= rs.getString(1)%> ,  Product Id: <%= rs.getString(2) %> </div>
+  	<div class="card-body">
+    <p class="card-text">Ordered by : <%=rs.getString(3) %> End date: <%=rs.getString(5) %></p>
+    
+  	<footer class="blockquote-footer">Quantity: <cite title="Source Title"> <%=rs.getString(6) %></cite></footer>
+  </div>
+  </div>
+		
+<%	}
+	
+}
+catch(Exception e){
+	System.out.println(""+e.getMessage());
+}
+%>
+</div>
 	
   
 </div>

@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 			pr.setString(1,email);
 			ResultSet rs=pr.executeQuery();
 			if(rs.next()){
-				out.write("This is email :"+email);
+				
 				psw=rs.getString(1);
 				ty=rs.getString(2);
 				if(psw.equals(ps)){
@@ -82,13 +82,19 @@ public class LoginServlet extends HttpServlet {
 				}
 				else
 				{
-					out.write("<script>alert('Password mismatch')</script>");
-					response.sendRedirect("/E-cart/");
+					out.write("<script>alert('password mismatch');window.location.href='/E-cart/';</script>");
+							
+					//response.sendRedirect("/E-cart/");
 					
 				}
 			}
+			else {
+				
+				
+			}
 			
 		}catch(Exception e1){
+			System.out.println("in catchh");
 			e1.printStackTrace();
 		}
 	}

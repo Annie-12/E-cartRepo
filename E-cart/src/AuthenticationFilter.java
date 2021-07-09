@@ -60,20 +60,13 @@ public class AuthenticationFilter implements Filter {
 			pr.setString(1,nm);
 			ResultSet rs=pr.executeQuery();
 			if(rs.next()){
-				psw=rs.getString(1);
-				out.write(""+nm);
-				if(psw.equals(ps)){
-					
-					
-					chain.doFilter(request, response);
-				}
-				else
-				{
-					RequestDispatcher rq=request.getRequestDispatcher("index.jsp");
-					rq.forward(request, response);
+				psw=rs.getString(1);		
+				chain.doFilter(request, response);
 				
-					
-				}
+			}
+			else {
+				
+				out.write("<script>alert('First sign up');window.location.href='/E-cart/Registration.jsp';</script>");
 			}
 			
 		}catch(Exception e1){
