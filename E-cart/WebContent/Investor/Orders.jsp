@@ -61,15 +61,15 @@ try{
 		
 		
 <div class="card bg-light" >
-  <div class="card-header" id="pid">  Product Id: <%= rs.getString(2) %> </div>
+  <div class="card-header" id="pid<%=rs.getString(1) %>">  Product Id: <%= rs.getString(2) %> </div>
   	<div class="card-body">
-    <p class="card-text" id="dt"> Start-date: <%=rs.getString(4) %> End-date : <%=rs.getString(5) %></p>
-    <p class="card-text" id="spec">Specification : <%=rs.getString(7) %>
-    <p class="card-text" id="q">Quantity : <%=rs.getString(6) %></p>
+    <p class="card-text" id="dt<%=rs.getString(1) %>"> Start-date: <%=rs.getString(4) %> End-date : <%=rs.getString(5) %></p>
+    <p class="card-text" id="spec<%=rs.getString(1) %>">Specification : <%=rs.getString(7) %>
+    <p class="card-text" id="q<%=rs.getString(1) %>">Quantity : <%=rs.getString(6) %></p>
     </div>
-  	<footer class="blockquote-footer">Payment method : <cite title="Source Title" id="pay"> <%=rs.getString(8) %></cite></footer>
-  <input type="button" id="btn" class="btn btn-secondary"
-				value="Download" />
+  	<footer class="blockquote-footer">Payment method : <cite title="Source Title" id="pay<%=rs.getString(1) %>"> <%=rs.getString(8) %></cite></footer>
+  
+  <button id="btn<%=rs.getString(1) %>" onClick="reply_click(this.id)" class="btn btn-secondary">Download</button>
   </div>
   
 	<br>	
@@ -108,20 +108,19 @@ function download(file, text) {
 
 	document.body.removeChild(element);
 }
-
-// Start file download.
-document.getElementById("btn")
-.addEventListener("click", function() {
-	// Generate download of hello.txt
-	// file with some content
-	var text = document.getElementById("pid").innerHTML+document.getElementById("dt").innerHTML+"\n"
+function reply_click(clicked_id)
+{
+    var abc=clicked_id.substring(3);
+    
+	var text = document.getElementById("pid"+abc).innerHTML+document.getElementById("dt"+abc).innerHTML+"\n"
 	
-	+document.getElementById("spec").innerHTML+document.getElementById("q").innerHTML+"\n  payment :"+
-	document.getElementById("pay").innerHTML;
+	+document.getElementById("spec"+abc).innerHTML+document.getElementById("q"+abc).innerHTML+"\n  payment :"+
+	document.getElementById("pay"+abc).innerHTML;
 	var filename = "pledge-identifier.txt";
 
 	download(filename, text);
-}, false);
+}
+
 </script>
 </body>
 </html>

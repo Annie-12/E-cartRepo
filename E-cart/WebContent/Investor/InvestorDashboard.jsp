@@ -10,6 +10,30 @@
 <script src="/E-cart/Js/main.js" type=module></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.column {
+  float: left;
+  padding: 10px;
+  height: 190px; 
+  border:1px solid gray;/* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+}
+</style>
 </head>
 <body>
 <%
@@ -55,6 +79,7 @@ String email=(String)session.getAttribute("email");
 	
 </div>
 <br>
+<div class="container">
 <%
 
        List<Products> ls=ProductsDb.getProducts();
@@ -65,25 +90,28 @@ String email=(String)session.getAttribute("email");
     	   session.setAttribute(p.getId(), productId);
   			
     	   %>
-    	   <div class="card" style="width: 20%;">
-  				<img class="card-img-top" src="<%=src %>" alt="Card image cap">
-				  <div class="card-body">
+    	   <div class="row">
+			  <div class="column left">
+			    <img class="card-img" src="<%=src %>" alt="Card image cap" style="height:70px;width:80px">
+			  </div>
+			  <div class="column right">
+			    <div class="card-body" >
 				    <h5 class="card-title"><%=p.getName() %></h5>
 				    <p class="card-text"><%= p.getDesc() %></p>
 				   <%out.write("<a class='btn btn-primary' href='PlaceOrder.jsp?prodid="+productId +"'>Place order</a>"); %>
 				    
 				  </div>
-</div>
- <% }
-      
-       
-        
-      // os.flush();
-   // os.close();}
+			  </div>
+			</div>
+    	   <br>
+ <% 
+ 
+       }
+    
 	
 
 %>
-
+</div>
 
 
 
