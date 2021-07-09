@@ -11,12 +11,12 @@
 <body>
 <div class="sidenav">
 	<a href="AdminHome.jsp">Home</a>
-  <a href="GetQueries.jsp">Get Queries</a>
+  <a href="GetQueries.jsp?page=1">Get Queries</a>
   <a href="Approve.jsp">Approve featured project</a>
   
 </div>
 <div class="logout" style="float:right;padding:5px">
-<form action="logout.jsp">
+<form action="/E-cart/logout.jsp">
 	<input type="submit" class="btn btn-primary" name="logoutbtn" value="Logout"/></form>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

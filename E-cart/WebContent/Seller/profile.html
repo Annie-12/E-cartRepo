@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>E-cart</title>
+<script src="Js/main.js" type=module></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="https://i.pinimg.com/736x/62/2f/9d/622f9d0cfaf3bdd69fba4046103363e2.jpg">
+
+<style type="text/css">
+  
+	h1,.table {
+    width: 50%;
+    margin: auto;
+  }
+  .table {
+    box-shadow: 4px 8px 20px 1px #c0c0c037;
+  }
+  .table td {
+    border: none;
+
+  }
+  .left {
+    width: 130px;
+  }
+  .rowHover {
+    background-color: #cccccc17;
+  }
+
+
+	
+</style>
+
+</head>
+<body>
+<header-h></header-h>
+
+<h1 class="mt-5"> Details: </h1>
+<table class="table mt-3">
+  <tbody>
+    <tr class="tableRows">
+      <td class="left">Email</td>
+      <td class="mid">:</td>
+      <td class="right">email1@gmail.com</td>
+    </tr>
+    <tr class="tableRows">
+      <td class="left">Address Line 1</td>
+      <td class="mid">:</td>
+      <td class="right">56/A, Chandubabu Street</td>
+    </tr>
+    <tr class="tableRows">
+      <td class="left">Address Line 2</td>
+      <td class="mid">:</td>
+      <td class="right">Dakshinpara Lane</td>
+    </tr>
+    <tr class="tableRows">
+      <td class="left">City</td>
+      <td class="mid">:</td>
+      <td class="right">Kolkata</td>
+    </tr>
+    <tr class="tableRows">
+      <td class="left">State</td>
+      <td class="mid">:</td>
+      <td class="right">West Bengal</td>
+    </tr>
+    <tr class="tableRows">
+      <td class="left">Pin Code</td>
+      <td class="mid">:</td>
+      <td class="right">700222</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<footer-f></footer-f>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+  const hovered = document.getElementsByClassName("tableRows");
+  
+  for(let i=0;i<hovered.length;i++) {
+    hovered[i].addEventListener("mouseover", function(e) {
+      hovered[i].classList.toggle("rowHover");
+    })
+    hovered[i].addEventListener("mouseout", function(e) {
+      hovered[i].classList.toggle("rowHover");
+    })
+  }
+</script>
+
+
+</body>
+</html>

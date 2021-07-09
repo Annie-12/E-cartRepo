@@ -12,4 +12,22 @@
   <listener>
   <listener-class>DatabaseListener</listener-class>
   </listener>
+  
+  <servlet>
+  <servlet-name>Login</servlet-name>
+  <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Login</servlet-name>
+  <url-pattern>/loginservlet</url-pattern>
+  </servlet-mapping>
+  <filter>
+  <filter-name>filterlog</filter-name>
+  <filter-class>AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>filterlog</filter-name>
+  <url-pattern>/loginservlet</url-pattern>
+  </filter-mapping>
+  
 </web-app>
