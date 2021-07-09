@@ -1,4 +1,4 @@
-package entities;
+package beans;
 
 public class User {
 
