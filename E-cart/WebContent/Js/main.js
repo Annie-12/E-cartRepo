@@ -14,9 +14,7 @@ class Header extends HTMLElement {
       <li class="nav-item">
         <a class="nav-link" href="/E-cart/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" id="about">
-        <a class="nav-link" href="about.html">About Us</a>
-      </li>
+      
       <li class="nav-item" id="contact">
         <a class="nav-link" href="contact.jsp">Contact Us</a>
       </li>
